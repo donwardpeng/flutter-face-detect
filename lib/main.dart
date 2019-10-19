@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './ui/face_detect_camera.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,7 +21,14 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Face Detection Demo'),
+      // home: MyHomePage(title: 'Face Detection Demo'),
+      initialRoute: '/',
+      routes: {
+        // When navigating to the "/" route, build the MyHomePage widget.
+        '/': (context) => MyHomePage(title: 'Face Detection Demo'),
+        // When navigating to the "/second" route, build the SecondScreen widget.
+        '/faceDetectCamera': (context) => FaceDetectScreen(),
+      },
     );
   }
 }
@@ -98,8 +106,10 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
-            RaisedButton(child:Text('Detect Faces'),
-            onPressed: (){},)
+            RaisedButton(
+              child: Text('Detect Faces'),
+              onPressed: () {Navigator.pushNamed(context, '/faceDetectCamera');},
+            )
           ],
         ),
       ),
