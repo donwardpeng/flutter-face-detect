@@ -46,7 +46,7 @@ class FaceDetectStateWidget extends State<FaceDetectScreen> {
             enableLandmarks: true,
             enableClassification: false,
             enableTracking: true));
-    final faces = await faceDetector.detectInImage(image);
+    final faces = await faceDetector.processImage(image);
 
     if (mounted) {
       setState(() {
